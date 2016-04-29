@@ -2,8 +2,8 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>PCLExt.Network</id>
-        <version>1.0.0</version>
-        <title>PCL Storage - Portable Storage APIs</title>
+        <version>1.0.2</version>
+        <title>PCL Extension - Network API</title>
         <authors>Aragas</authors>
         <owners>Aragas</owners>
         <licenseUrl>https://github.com/Aragas/PCLExt.Network/blob/master/LICENSE</licenseUrl>
