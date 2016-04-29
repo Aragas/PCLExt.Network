@@ -5,6 +5,18 @@ namespace PCLExt.Network
     /// <summary>
     /// 
     /// </summary>
+    public interface ITCPClientFactory
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        ITCPClient Create();
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
     public interface ITCPClient : IDisposable
     {
         /// <summary>

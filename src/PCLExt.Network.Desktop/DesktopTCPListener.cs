@@ -3,6 +3,11 @@ using System.Net.Sockets;
 
 namespace PCLExt.Network
 {
+    public class DesktopTCPServerFactory : ITCPListenerFactory
+    {
+        public ITCPListener Create(ushort port) { return new DesktopTCPListener(port); }
+    }
+
     /// <summary>
     /// 
     /// </summary>
