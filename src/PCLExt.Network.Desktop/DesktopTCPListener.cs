@@ -3,7 +3,7 @@ using System.Net.Sockets;
 
 namespace PCLExt.Network
 {
-    public class DesktopTCPServerFactory : ITCPListenerFactory
+    internal class DesktopTCPServerFactory : ITCPListenerFactory
     {
         public ITCPListener Create(ushort port) { return new DesktopTCPListener(port); }
     }
