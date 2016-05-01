@@ -42,8 +42,8 @@
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TCPClientFactory.cs" />
-    <Compile Include="TCPListenerFactory.cs" />
+    <Compile Include="TCPClient.cs" />
+    <Compile Include="TCPListener.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PCLExt.Network.Abstractions\PCLExt.Network.Abstractions.csproj">

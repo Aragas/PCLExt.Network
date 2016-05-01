@@ -18,7 +18,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;DESKTOP;COMMON</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;DESKTOP;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -26,7 +26,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE;DESKTOP;COMMON</DefineConstants>
+    <DefineConstants>TRACE;DESKTOP;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Release\PCLExt.Network.XML</DocumentationFile>
@@ -45,11 +45,11 @@
     <Compile Include="..\..\common\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="..\PCLExt.Network\TCPClientFactory.cs">
-      <Link>TCPClientFactory.cs</Link>
+    <Compile Include="..\PCLExt.Network\TCPClient.cs">
+      <Link>TCPClient.cs</Link>
     </Compile>
-    <Compile Include="..\PCLExt.Network\TCPListenerFactory.cs">
-      <Link>TCPListenerFactory.cs</Link>
+    <Compile Include="..\PCLExt.Network\TCPListener.cs">
+      <Link>TCPListener.cs</Link>
     </Compile>
     <Compile Include="DesktopTCPListener.cs" />
     <Compile Include="DesktopTCPClient.cs" />

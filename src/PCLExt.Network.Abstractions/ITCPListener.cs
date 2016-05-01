@@ -5,19 +5,6 @@ namespace PCLExt.Network
     /// <summary>
     /// 
     /// </summary>
-    public interface ITCPListenerFactory
-    {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="port"></param>
-        /// <returns></returns>
-        ITCPListener Create(UInt16 port);
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
     public interface ITCPListener : IDisposable
     {
         /// <summary>

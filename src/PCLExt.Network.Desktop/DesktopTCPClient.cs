@@ -4,12 +4,6 @@ using System.Net.Sockets;
 
 namespace PCLExt.Network
 {
-    internal class DesktopTCPClientFactory : ITCPClientFactory
-    {
-        public ITCPClient Create() => new DesktopTCPClient();
-        internal static ITCPClient CreateTCPClient(Socket socket) => new DesktopTCPClient(socket);
-    }
-
     /// <summary>
     /// 
     /// </summary>

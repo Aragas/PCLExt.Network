@@ -22,7 +22,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;ANDROID;COMMON;</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;ANDROID;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -30,7 +30,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE;ANDROID;COMMON;</DefineConstants>
+    <DefineConstants>TRACE;ANDROID;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Release\PCLExt.Network.XML</DocumentationFile>
@@ -53,20 +53,13 @@
     <Compile Include="..\PCLExt.Network.Desktop\DesktopTCPListener.cs">
       <Link>DesktopTCPListener.cs</Link>
     </Compile>
-    <Compile Include="..\PCLExt.Network\TCPClientFactory.cs">
-      <Link>TCPClientFactory.cs</Link>
+    <Compile Include="..\PCLExt.Network\TCPClient.cs">
+      <Link>TCPClient.cs</Link>
     </Compile>
-    <Compile Include="..\PCLExt.Network\TCPListenerFactory.cs">
-      <Link>TCPListenerFactory.cs</Link>
+    <Compile Include="..\PCLExt.Network\TCPListener.cs">
+      <Link>TCPListener.cs</Link>
     </Compile>
-    <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\AboutResources.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\Values\Strings.xml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PCLExt.Network.Abstractions\PCLExt.Network.Abstractions.csproj">
