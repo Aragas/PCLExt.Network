@@ -35,7 +35,7 @@
     <DocumentationFile>bin\Release\PCLExt.Network.Abstractions.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\..\common\CommonAssemblyInfo.cs">
+    <Compile Include="$(SolutionDir)\common\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="ITCPClient.cs" />
