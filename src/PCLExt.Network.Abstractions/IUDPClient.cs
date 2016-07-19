@@ -5,8 +5,8 @@ namespace PCLExt.Network
     /// <summary>
     /// 
     /// </summary>
-    public interface ITCPClient : ISocketClient, IDisposable
+    public interface IUDPClient : ISocketClient, IDisposable
     {
-        Boolean IsConnected { get; }
+
     }
 }

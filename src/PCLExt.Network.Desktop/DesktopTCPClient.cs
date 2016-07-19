@@ -4,104 +4,63 @@ using System.Net.Sockets;
 
 namespace PCLExt.Network
 {
-    /// <summary>
-    /// 
-    /// </summary>
     public class DesktopTCPClient : ITCPClient
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        public string IP => !IsDisposed && Client != null && Client.Connected ? (Client.RemoteEndPoint as IPEndPoint)?.Address.ToString() : "";
-        /// <summary>
-        /// 
-        /// </summary>
-        public ushort Port => (ushort) (!IsDisposed && Client != null && Client.Connected ? (Client.RemoteEndPoint as IPEndPoint)?.Port : 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        public bool Connected => !IsDisposed && Client != null && Client.Connected;
-        /// <summary>
-        /// 
-        /// </summary>
-        public int DataAvailable => !IsDisposed && Client != null ? Client.Available : 0;
+        private Socket Socket { get; }
+        private bool _disposed;
 
-        private Socket Client { get; }
+        public IPPort LocalEndPoint => new IPPort(
+            !_disposed && Socket != null && Socket.Connected ? (Socket.LocalEndPoint as IPEndPoint)?.Address.ToString() : "",
+            (ushort) (!_disposed && Socket != null && Socket.Connected ? (Socket.LocalEndPoint as IPEndPoint)?.Port : 0));
+        public IPPort RemoteEndPoint => new IPPort(
+            !_disposed && Socket != null && Socket.Connected ? (Socket.RemoteEndPoint as IPEndPoint)?.Address.ToString() : "",
+            (ushort) (!_disposed && Socket != null && Socket.Connected ? (Socket.RemoteEndPoint as IPEndPoint)?.Port : 0));
+        
+        public bool IsConnected => !_disposed && Socket != null && Socket.Connected;
 
-        private bool IsDisposed { get; set; }
+        public int DataAvailable => !_disposed && Socket != null ? Socket.Available : 0;
 
+        
+        public DesktopTCPClient() { Socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp) { NoDelay = true }; }
+        internal DesktopTCPClient(Socket socket) { Socket = socket; }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public DesktopTCPClient() { Client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp) { NoDelay = true }; }
-        internal DesktopTCPClient(Socket socket) { Client = socket; }
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="ip"></param>
-        /// <param name="port"></param>
-        /// <returns></returns>
-        public ITCPClient Connect(string ip, ushort port)
+        public void Connect(string ip, ushort port)
         {
-            if (Connected)
+            if (IsConnected)
                 Disconnect();
 
-            Client.Connect(ip, port);
-
-            return this;
+            Socket.Connect(ip, port);
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        public ITCPClient Disconnect()
+        public void Disconnect()
         {
-            if (Connected)
-                Client.Disconnect(false);
-
-            return this;
+            if (IsConnected)
+                Socket.Disconnect(false);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="buffer"></param>
-        /// <param name="offset"></param>
-        /// <param name="count"></param>
         public void Write(byte[] buffer, int offset, int count)
         {
-            if (IsDisposed)
+            if (_disposed)
                 return;
 
             try
             {
                 var bytesSend = 0;
                 while (bytesSend < count)
-                    bytesSend += Client.Send(buffer, bytesSend, count - bytesSend, 0);
+                    bytesSend += Socket.Send(buffer, bytesSend, count - bytesSend, 0);
             }
             catch (IOException) { }
             catch (SocketException) { }
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="buffer"></param>
-        /// <param name="offset"></param>
-        /// <param name="count"></param>
-        /// <returns></returns>
         public int Read(byte[] buffer, int offset, int count)
         {
-            if (IsDisposed)
+            if (_disposed)
                 return -1;
 
             try
             {
                 var bytesReceived = 0;
                 while (bytesReceived < count)
-                    bytesReceived += Client.Receive(buffer, bytesReceived, count - bytesReceived, 0);
+                    bytesReceived += Socket.Receive(buffer, bytesReceived, count - bytesReceived, 0);
 
                 return bytesReceived;
             }
@@ -109,17 +68,17 @@ namespace PCLExt.Network
             catch (SocketException) { return -1; }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public void Dispose()
         {
-            if (Connected)
+            if (_disposed)
+                return;
+
+            if (IsConnected)
                 Disconnect();
 
-            IsDisposed = true;
+            _disposed = true;
 
-            Client?.Dispose();
+            Socket.Dispose();
         }
     }
 }

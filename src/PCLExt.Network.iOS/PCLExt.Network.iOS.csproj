@@ -52,11 +52,26 @@
     <Compile Include="$(SolutionDir)\src\PCLExt.Network.Desktop\DesktopTCPListener.cs">
       <Link>DesktopTCPListener.cs</Link>
     </Compile>
-    <Compile Include="$(SolutionDir)\src\PCLExt.Network\TCPClient.cs">
-      <Link>TCPClient.cs</Link>
+    <Compile Include="$(SolutionDir)\src\PCLExt.Network.Desktop\DesktopTCPClientEvent.cs">
+      <Link>DesktopTCPClientEvent.cs</Link>
     </Compile>
-    <Compile Include="$(SolutionDir)\src\PCLExt.Network\TCPListener.cs">
-      <Link>TCPListener.cs</Link>
+    <Compile Include="$(SolutionDir)\src\PCLExt.Network.Desktop\DesktopTCPListenerEvent.cs">
+      <Link>DesktopTCPListenerEvent.cs</Link>
+    </Compile>
+    <Compile Include="$(SolutionDir)\src\PCLExt.Network.Desktop\DesktopUDPClient.cs">
+      <Link>DesktopUDPClient.cs</Link>
+    </Compile>
+    <Compile Include="$(SolutionDir)\src\PCLExt.Network.Desktop\DesktopUDPClientEvent.cs">
+      <Link>DesktopUDPClientEvent.cs</Link>
+    </Compile>
+    <Compile Include="$(SolutionDir)\src\PCLExt.Network.Desktop\DesktopUDPListener.cs">
+      <Link>DesktopUDPListener.cs</Link>
+    </Compile>
+    <Compile Include="$(SolutionDir)\src\PCLExt.Network\SocketClient.cs">
+      <Link>SocketClient.cs</Link>
+    </Compile>
+    <Compile Include="$(SolutionDir)\src\PCLExt.Network\SocketServer.cs">
+      <Link>SocketServer.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

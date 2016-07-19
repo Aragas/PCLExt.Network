@@ -38,6 +38,18 @@
     <Compile Include="$(SolutionDir)\common\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="EventArgs\SocketEvent.cs" />
+    <Compile Include="EventArgs\SocketDataReceivedArgs.cs" />
+    <Compile Include="EventArgs\SocketConnectedArgs.cs" />
+    <Compile Include="EventArgs\SocketDisconnectedArgs.cs" />
+    <Compile Include="IPPort.cs" />
+    <Compile Include="ISocketServer.cs" />
+    <Compile Include="ISocketClient.cs" />
+    <Compile Include="ITCPListenerEvent.cs" />
+    <Compile Include="IUDPClientEvent.cs" />
+    <Compile Include="IUDPListener.cs" />
+    <Compile Include="IUDPClient.cs" />
+    <Compile Include="ITCPClientEvent.cs" />
     <Compile Include="ITCPClient.cs" />
     <Compile Include="ITCPListener.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

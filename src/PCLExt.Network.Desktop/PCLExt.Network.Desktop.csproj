@@ -42,17 +42,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="$(SolutionDir)\src\PCLExt.Network\SocketClient.cs">
+      <Link>SocketClient.cs</Link>
+    </Compile>
+    <Compile Include="$(SolutionDir)\src\PCLExt.Network\SocketServer.cs">
+      <Link>SocketServer.cs</Link>
+    </Compile>
     <Compile Include="$(SolutionDir)\common\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="$(SolutionDir)\src\PCLExt.Network\TCPClient.cs">
-      <Link>TCPClient.cs</Link>
-    </Compile>
-    <Compile Include="$(SolutionDir)\src\PCLExt.Network\TCPListener.cs">
-      <Link>TCPListener.cs</Link>
-    </Compile>
+    <Compile Include="DesktopTCPClientEvent.cs" />
+    <Compile Include="DesktopTCPListenerEvent.cs" />
     <Compile Include="DesktopTCPListener.cs" />
     <Compile Include="DesktopTCPClient.cs" />
+    <Compile Include="DesktopUDPClientEvent.cs" />
+    <Compile Include="DesktopUDPClient.cs" />
+    <Compile Include="DesktopUDPListener.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
