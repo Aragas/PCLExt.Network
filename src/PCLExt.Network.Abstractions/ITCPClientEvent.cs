@@ -1,12 +1,12 @@
-﻿namespace PCLExt.Network
+﻿using System;
+
+namespace PCLExt.Network
 {
     /// <summary>
     /// Event driven TCPClient
     /// </summary>
-    public interface ITCPClientEvent : ITCPClient
+    public interface ITCPClientEvent : ISocketClientEvent
     {
-        event SocketConnectedEventArgs      Connected;
-        event SocketDataReceivedEventArgs   DataReceived;
-        event SocketDisconnectedEventArgs   Disconnected;
+        Boolean IsConnected { get; }
     }
 }

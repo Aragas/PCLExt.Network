@@ -43,6 +43,7 @@
     <Compile Include="EventArgs\SocketConnectedArgs.cs" />
     <Compile Include="EventArgs\SocketDisconnectedArgs.cs" />
     <Compile Include="IPPort.cs" />
+    <Compile Include="ISocketClientEvent.cs" />
     <Compile Include="ISocketServer.cs" />
     <Compile Include="ISocketClient.cs" />
     <Compile Include="ITCPListenerEvent.cs" />

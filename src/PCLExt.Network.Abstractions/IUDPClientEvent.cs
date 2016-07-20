@@ -3,10 +3,8 @@
     /// <summary>
     /// Event driven UDPClient
     /// </summary>
-    public interface IUDPClientEvent : IUDPClient
+    public interface IUDPClientEvent : IUDPClient, ISocketClientEvent
     {
-        event SocketConnectedEventArgs      Connected;
-        event SocketDataReceivedEventArgs   DataReceived;
-        event SocketDisconnectedEventArgs   Disconnected;
+
     }
-}
+} 
