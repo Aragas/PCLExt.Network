@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Concurrent;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
@@ -33,14 +32,11 @@ namespace PCLExt.Network
 
         private bool _closing, _disposed;
         private byte[] _readBuffer = new byte[ReadBufferSize];
-        private ConcurrentQueue<byte[]> _receiveBuffer;
 
         
-        public DesktopTCPClientEvent() { ResetBuffers(); _socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp) { NoDelay = true }; }
+        public DesktopTCPClientEvent() { _socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp) { NoDelay = true }; }
         internal DesktopTCPClientEvent(Socket socket)
         {
-            ResetBuffers();
-
             _socket = socket;
             if (!_socket.Connected)
                 throw new ArgumentException("Socket is not connected!");
@@ -77,8 +73,6 @@ namespace PCLExt.Network
 
             _closing = true;
 
-
-            ResetBuffers();
             _socket.Close();
 
             IsConnected = false;
@@ -101,19 +95,7 @@ namespace PCLExt.Network
             catch (IOException) { }
             catch (SocketException) { }
         }
-        public int Read(byte[] buffer, int offset, int count)
-        {
-            if (_closing || _disposed)
-                return -1;
-
-            lock (_receiveBuffer)
-            {
-                if (!_receiveBuffer.TryDequeue(out buffer))
-                    return 0;
-
-                return buffer.Length;
-            }
-        }
+        public int Read(byte[] buffer, int offset, int count) { throw new NotSupportedException(); }
 
         public void Dispose()
         {
@@ -128,11 +110,6 @@ namespace PCLExt.Network
             _socket?.Dispose();
         }
 
-
-        private void ResetBuffers()
-        {
-            _receiveBuffer = new ConcurrentQueue<byte[]>();
-        }
 
         #region Callbacks
         private void ConnectCallback(IAsyncResult ar)
@@ -158,10 +135,7 @@ namespace PCLExt.Network
             Buffer.BlockCopy(_readBuffer, 0, newMem, 0, received); // -- Copy the received data so the end user can use it however they wish
 
 
-            if(DataReceived != null) // -- Call the data received event. (Unblocks immediately, async).
-                DataReceived(new SocketDataReceivedArgs(this, newMem));
-            else
-                _receiveBuffer.Enqueue(newMem);
+            DataReceived?.Invoke(new SocketDataReceivedArgs(this, newMem)); // -- Call the data received event. (Unblocks immediately, async).
 
 
             try { if (!_closing) _socket.BeginReceive(_readBuffer, 0, ReadBufferSize, 0, ReceiveCallback, null); /* Read again! */ }

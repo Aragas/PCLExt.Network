@@ -12,6 +12,8 @@ namespace PCLExt.Network
 
         Int32 DataAvailable { get; }
 
+        Boolean IsConnected { get; }
+
 
         void Connect(String ip, UInt16 port);
         void Disconnect();

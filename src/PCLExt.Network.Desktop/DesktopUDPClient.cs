@@ -19,7 +19,7 @@ namespace PCLExt.Network
         /// <summary>
         /// 
         /// </summary>
-        public bool Connected => !IsDisposed && Client != null && Client.Connected;
+        public bool IsConnected => !IsDisposed && Client != null && Client.Connected;
         /// <summary>
         /// 
         /// </summary>
@@ -45,7 +45,7 @@ namespace PCLExt.Network
         /// <returns></returns>
         public void Connect(string ip, ushort port)
         {
-            if (Connected)
+            if (IsConnected)
                 Disconnect();
 
             Client.Connect(ip, port);
@@ -56,7 +56,7 @@ namespace PCLExt.Network
         /// <returns></returns>
         public void Disconnect()
         {
-            if (Connected)
+            if (IsConnected)
                 Client.Disconnect(false);
         }
 
@@ -109,7 +109,7 @@ namespace PCLExt.Network
         /// </summary>
         public void Dispose()
         {
-            if (Connected)
+            if (IsConnected)
                 Disconnect();
 
             IsDisposed = true;

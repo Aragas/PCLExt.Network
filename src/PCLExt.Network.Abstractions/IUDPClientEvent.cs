@@ -1,9 +1,11 @@
-﻿namespace PCLExt.Network
+﻿using System;
+
+namespace PCLExt.Network
 {
     /// <summary>
     /// Event driven UDPClient
     /// </summary>
-    public interface IUDPClientEvent : IUDPClient, ISocketClientEvent
+    public interface IUDPClientEvent : ISocketClientEvent, IDisposable
     {
 
     }

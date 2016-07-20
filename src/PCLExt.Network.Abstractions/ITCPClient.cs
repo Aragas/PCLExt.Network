@@ -7,6 +7,6 @@ namespace PCLExt.Network
     /// </summary>
     public interface ITCPClient : ISocketClient, IDisposable
     {
-        Boolean IsConnected { get; }
+
     }
 }
