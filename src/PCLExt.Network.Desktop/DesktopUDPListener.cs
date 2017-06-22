@@ -49,7 +49,11 @@ namespace PCLExt.Network
             if (IsDisposed)
                 return;
 
+#if CORE
+            Listener.Shutdown(SocketShutdown.Both);
+#else
             Listener.Close();
+#endif
         }
 
         /// <summary>

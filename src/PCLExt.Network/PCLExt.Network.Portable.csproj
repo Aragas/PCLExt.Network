@@ -36,13 +36,13 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
-    <ProjectReference Include="$(SolutionDir)\src\PCLExt.Network.Abstractions\PCLExt.Network.Abstractions.csproj">
+    <ProjectReference Include="..\PCLExt.Network.Abstractions\PCLExt.Network.Portable.Abstractions.csproj">
       <Project>{3f8d0494-6ee2-47fe-b263-f09a5ea3d0b3}</Project>
-      <Name>PCLExt.Network.Abstractions</Name>
+      <Name>PCLExt.Network.Portable.Abstractions</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="$(SolutionDir)\common\CommonAssemblyInfo.cs">
+    <Compile Include="..\..\common\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

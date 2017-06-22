@@ -11,6 +11,9 @@ namespace PCLExt.Network
             new NotImplementedException(@"This functionality is not implemented in the portable version of this assembly.
 You should reference the PCLExt.Network NuGet package from your main application project in order to reference the platform-specific implementation.");
 
+        private static Exception NotImplementedInNetCore() =>
+            new NotImplementedException(@"This functionality is not implemented in the current version of this .NET Standard.");
+
 
         /// <summary>
         /// 
@@ -18,7 +21,7 @@ You should reference the PCLExt.Network NuGet package from your main application
         /// <returns></returns>
         public static ITCPClient CreateTCP()
         {
-#if DESKTOP || ANDROID || __IOS__ || MAC
+#if DESKTOP || ANDROID || __IOS__ || MAC || CORE
             return new DesktopTCPClient();
 #endif
 
@@ -33,6 +36,8 @@ You should reference the PCLExt.Network NuGet package from your main application
         {
 #if DESKTOP || ANDROID || __IOS__ || MAC
             return new DesktopTCPClientEvent();
+#elif CORE
+            throw NotImplementedInNetCore();
 #endif
 
             throw NotImplementedInReferenceAssembly();
@@ -44,7 +49,7 @@ You should reference the PCLExt.Network NuGet package from your main application
         /// <returns></returns>
         public static IUDPClient CreateUDP()
         {
-#if DESKTOP || ANDROID || __IOS__ || MAC
+#if DESKTOP || ANDROID || __IOS__ || MAC || CORE
             return new DesktopUDPClient();
 #endif
 
@@ -59,6 +64,8 @@ You should reference the PCLExt.Network NuGet package from your main application
         {
 #if DESKTOP || ANDROID || __IOS__ || MAC
             return new DesktopUDPClientEvent();
+#elif CORE
+            throw NotImplementedInNetCore();
 #endif
 
             throw NotImplementedInReferenceAssembly();

@@ -21,7 +21,7 @@ namespace PCLExt.Network
         public int DataAvailable => !_disposed && Socket != null ? Socket.Available : 0;
 
         
-        public DesktopTCPClient() { Socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp) { NoDelay = true }; }
+        public DesktopTCPClient() { Socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp); }
         internal DesktopTCPClient(Socket socket) { Socket = socket; }
 
         public void Connect(string ip, ushort port)
@@ -34,7 +34,11 @@ namespace PCLExt.Network
         public void Disconnect()
         {
             if (IsConnected)
+#if CORE
+                Socket.Shutdown(SocketShutdown.Both);
+#else
                 Socket.Disconnect(false);
+#endif
         }
 
         public void Write(byte[] buffer, int offset, int count)
@@ -44,9 +48,9 @@ namespace PCLExt.Network
 
             try
             {
-                var bytesSend = 0;
+                var bytesSend = offset;
                 while (bytesSend < count)
-                    bytesSend += Socket.Send(buffer, bytesSend, count - bytesSend, 0);
+                    bytesSend += Socket.Send(buffer, bytesSend, count - bytesSend, SocketFlags.None);
             }
             catch (IOException) { }
             catch (SocketException) { }
@@ -58,9 +62,9 @@ namespace PCLExt.Network
 
             try
             {
-                var bytesReceived = 0;
+                var bytesReceived = offset;
                 while (bytesReceived < count)
-                    bytesReceived += Socket.Receive(buffer, bytesReceived, count - bytesReceived, 0);
+                    bytesReceived += Socket.Receive(buffer, bytesReceived, count - bytesReceived, SocketFlags.None);
 
                 return bytesReceived;
             }
@@ -79,6 +83,6 @@ namespace PCLExt.Network
             _disposed = true;
 
             Socket.Dispose();
-        }
+        }   
     }
 }

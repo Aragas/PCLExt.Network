@@ -124,9 +124,7 @@ namespace PCLExt.Network
         { // -- Potential Bug: Data that needs to be in order, sending in an incorrect order due to async stuff.
             while (_sendBuffer.Count > 0)
             {
-                byte[] data;
-
-                if (!_sendBuffer.TryDequeue(out data))
+                if (!_sendBuffer.TryDequeue(out var data))
                 {
                     _sending = false;
                     return;

@@ -37,9 +37,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
-    <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -76,7 +74,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="$(SolutionDir)\src\PCLExt.Network.Abstractions\PCLExt.Network.Abstractions.csproj">
+    <ProjectReference Include="..\PCLExt.Network.Abstractions\PCLExt.Network.Portable.Abstractions.csproj">
+      <Project>{3f8d0494-6ee2-47fe-b263-f09a5ea3d0b3}</Project>
+      <Name>PCLExt.Network.Portable.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="E:\Shared\PCLExt.Network\\src\PCLExt.Network.Abstractions\PCLExt.Network.Abstractions.csproj">
       <Project>{3f8d0494-6ee2-47fe-b263-f09a5ea3d0b3}</Project>
       <Name>PCLExt.Network.Abstractions</Name>
     </ProjectReference>

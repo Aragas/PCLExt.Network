@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>PCLExt.Network</id>
-        <version>1.0.11</version>
+        <version>1.1.0</version>
         <title>PCL Extension - Network API</title>
         <authors>Aragas</authors>
         <owners>Aragas</owners>
@@ -10,26 +10,32 @@
         <projectUrl>https://github.com/Aragas/PCLExt.Network</projectUrl>
         <iconUrl>https://raw.githubusercontent.com/Aragas/PCLExt.Network/master/common/sushi_64.png</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>PCL Extension provides network related implementations for .NET, Xamarin.iOS, Xamarin.Android. This makes it easier to create cross-platform .NET libraries and apps.</description>
+        <description>PCL Extension provides network related implementations for .NET, Xamarin.iOS, Xamarin.Android. This makes it easier to create cross-platform .NET libraries and apps. Supports .NET Standard now.</description>
         <summary>PCL Extension provides network related implementations for PCL platforms</summary>
-        <tags>network tcp udp portable pcl android mac ios xamarin monoandroid monotouch</tags>
+        <tags>network tcp udp portable pcl android mac ios xamarin monoandroid monotouch core netcore netstandard</tags>
     </metadata>
     <files>
-        <file src="..\src\PCLExt.Network.Abstractions\bin\Release\PCLExt.Network.Abstractions.dll" target="lib\monoandroid\PCLExt.Network.Abstractions.dll" />
-        <file src="..\src\PCLExt.Network.Abstractions\bin\Release\PCLExt.Network.Abstractions.XML" target="lib\monoandroid\PCLExt.Network.Abstractions.xml" />
-        <file src="..\src\PCLExt.Network.Android\bin\Release\PCLExt.Network.dll" target="lib\monoandroid\PCLExt.Network.dll" />
-        <file src="..\src\PCLExt.Network.Android\bin\Release\PCLExt.Network.XML" target="lib\monoandroid\PCLExt.Network.xml" />
+        <file src="..\src\PCLExt.Network.Abstractions\bin\Release\PCLExt.Network.Abstractions.dll" target="lib\MonoAndroid10\PCLExt.Network.Abstractions.dll" />
+        <file src="..\src\PCLExt.Network.Abstractions\bin\Release\PCLExt.Network.Abstractions.XML" target="lib\MonoAndroid10\PCLExt.Network.Abstractions.xml" />
+        <file src="..\src\PCLExt.Network.Android\bin\Release\PCLExt.Network.dll" target="lib\MonoAndroid10\PCLExt.Network.dll" />
+        <file src="..\src\PCLExt.Network.Android\bin\Release\PCLExt.Network.XML" target="lib\MonoAndroid10\PCLExt.Network.xml" />
+		
         <file src="..\src\PCLExt.Network.Abstractions\bin\Release\PCLExt.Network.Abstractions.dll" target="lib\net45\PCLExt.Network.Abstractions.dll" />
         <file src="..\src\PCLExt.Network.Abstractions\bin\Release\PCLExt.Network.Abstractions.XML" target="lib\net45\PCLExt.Network.Abstractions.xml" />
         <file src="..\src\PCLExt.Network.Desktop\bin\Release\PCLExt.Network.dll" target="lib\net45\PCLExt.Network.dll" />
         <file src="..\src\PCLExt.Network.Desktop\bin\Release\PCLExt.Network.XML" target="lib\net45\PCLExt.Network.xml" />
-        <file src="..\src\PCLExt.Network.Abstractions\bin\Release\PCLExt.Network.Abstractions.dll" target="lib\portable-net45+wp8+wpa81+win8+monoandroid+monotouch+Xamarin.iOS+Xamarin.Mac\PCLExt.Network.Abstractions.dll" />
-        <file src="..\src\PCLExt.Network.Abstractions\bin\Release\PCLExt.Network.Abstractions.XML" target="lib\portable-net45+wp8+wpa81+win8+monoandroid+monotouch+Xamarin.iOS+Xamarin.Mac\PCLExt.Network.Abstractions.xml" />
-        <file src="..\src\PCLExt.Network\bin\Release\PCLExt.Network.dll" target="lib\portable-net45+wp8+wpa81+win8+monoandroid+monotouch+Xamarin.iOS+Xamarin.Mac\PCLExt.Network.dll" />
-        <file src="..\src\PCLExt.Network\bin\Release\PCLExt.Network.XML" target="lib\portable-net45+wp8+wpa81+win8+monoandroid+monotouch+Xamarin.iOS+Xamarin.Mac\PCLExt.Network.xml" />
-        <file src="..\src\PCLExt.Network.Abstractions\bin\Release\PCLExt.Network.Abstractions.dll" target="lib\portable-Xamarin.iOS+Xamarin.Mac\PCLExt.Network.Abstractions.dll" />
-        <file src="..\src\PCLExt.Network.Abstractions\bin\Release\PCLExt.Network.Abstractions.XML" target="lib\portable-Xamarin.iOS+Xamarin.Mac\PCLExt.Network.Abstractions.xml" />
-        <file src="..\src\PCLExt.Network.iOS\bin\Release\PCLExt.Network.dll" target="lib\portable-Xamarin.iOS+Xamarin.Mac\PCLExt.Network.dll" />
-        <file src="..\src\PCLExt.Network.iOS\bin\Release\PCLExt.Network.XML" target="lib\portable-Xamarin.iOS+Xamarin.Mac\PCLExt.Network.xml" />
+		
+		<file src="..\src\PCLExt.Network.Core\bin\Release\netstandard1.3\PCLExt.Network.dll" target="lib\netstandard1.3\PCLExt.Network.dll" />
+        <file src="..\src\PCLExt.Network.Core\bin\Release\netstandard1.3\PCLExt.Network.xml" target="lib\netstandard1.3\PCLExt.Network.xml" />
+		
+        <file src="..\src\PCLExt.Network.Abstractions\bin\Release\PCLExt.Network.Abstractions.dll" target="lib\portable-net45+win8+wpa81\PCLExt.Network.Abstractions.dll" />
+        <file src="..\src\PCLExt.Network.Abstractions\bin\Release\PCLExt.Network.Abstractions.XML" target="lib\portable-net45+win8+wpa81\PCLExt.Network.Abstractions.xml" />
+        <file src="..\src\PCLExt.Network\bin\Release\PCLExt.Network.dll" target="lib\portable-net45+win8+wpa81\PCLExt.Network.dll" />
+        <file src="..\src\PCLExt.Network\bin\Release\PCLExt.Network.XML" target="lib\portable-net45+win8+wpa81\PCLExt.Network.xml" />
+		
+        <file src="..\src\PCLExt.Network.Abstractions\bin\Release\PCLExt.Network.Abstractions.dll" target="lib\Xamarin.iOS10\PCLExt.Network.Abstractions.dll" />
+        <file src="..\src\PCLExt.Network.Abstractions\bin\Release\PCLExt.Network.Abstractions.XML" target="lib\Xamarin.iOS10\PCLExt.Network.Abstractions.xml" />
+        <file src="..\src\PCLExt.Network.iOS\bin\Release\PCLExt.Network.dll" target="lib\Xamarin.iOS10\PCLExt.Network.dll" />
+        <file src="..\src\PCLExt.Network.iOS\bin\Release\PCLExt.Network.XML" target="lib\Xamarin.iOS10\PCLExt.Network.xml" />
     </files>
 </package>

@@ -10,22 +10,22 @@ namespace PCLExt.Network
     public class DesktopUDPClient : IUDPClient
     {
         public IPPort LocalEndPoint => new IPPort(
-            !IsDisposed && Client != null && Client.Connected ? (Client.LocalEndPoint as IPEndPoint)?.Address.ToString() : "",
-            (ushort) (!IsDisposed && Client != null && Client.Connected ? (Client.LocalEndPoint as IPEndPoint)?.Port : 0));
+            !IsDisposed && Socket != null && Socket.Connected ? (Socket.LocalEndPoint as IPEndPoint)?.Address.ToString() : "",
+            (ushort) (!IsDisposed && Socket != null && Socket.Connected ? (Socket.LocalEndPoint as IPEndPoint)?.Port : 0));
         public IPPort RemoteEndPoint => new IPPort(
-            !IsDisposed && Client != null && Client.Connected ? (Client.RemoteEndPoint as IPEndPoint)?.Address.ToString() : "",
-            (ushort) (!IsDisposed && Client != null && Client.Connected ? (Client.RemoteEndPoint as IPEndPoint)?.Port : 0));
+            !IsDisposed && Socket != null && Socket.Connected ? (Socket.RemoteEndPoint as IPEndPoint)?.Address.ToString() : "",
+            (ushort) (!IsDisposed && Socket != null && Socket.Connected ? (Socket.RemoteEndPoint as IPEndPoint)?.Port : 0));
 
         /// <summary>
         /// 
         /// </summary>
-        public bool IsConnected => !IsDisposed && Client != null && Client.Connected;
+        public bool IsConnected => !IsDisposed && Socket != null && Socket.Connected;
         /// <summary>
         /// 
         /// </summary>
-        public int DataAvailable => !IsDisposed && Client != null ? Client.Available : 0;
+        public int DataAvailable => !IsDisposed && Socket != null ? Socket.Available : 0;
 
-        private Socket Client { get; }
+        private Socket Socket { get; }
 
         private bool IsDisposed { get; set; }
 
@@ -33,8 +33,8 @@ namespace PCLExt.Network
         /// <summary>
         /// 
         /// </summary>
-        public DesktopUDPClient() { Client = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp); }
-        internal DesktopUDPClient(Socket socket) { Client = socket; }
+        public DesktopUDPClient() { Socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp); }
+        internal DesktopUDPClient(Socket socket) { Socket = socket; }
 
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace PCLExt.Network
             if (IsConnected)
                 Disconnect();
 
-            Client.Connect(ip, port);
+            Socket.Connect(ip, port);
         }
         /// <summary>
         /// 
@@ -57,7 +57,11 @@ namespace PCLExt.Network
         public void Disconnect()
         {
             if (IsConnected)
-                Client.Disconnect(false);
+#if CORE
+                Socket.Shutdown(SocketShutdown.Both);
+#else
+                Socket.Disconnect(false);
+#endif
         }
 
         /// <summary>
@@ -75,7 +79,7 @@ namespace PCLExt.Network
             {
                 var bytesSend = 0;
                 while (bytesSend < count)
-                    bytesSend += Client.Send(buffer, bytesSend, count - bytesSend, 0);
+                    bytesSend += Socket.Send(buffer, bytesSend, count - bytesSend, 0);
             }
             catch (IOException) { }
             catch (SocketException) { }
@@ -96,7 +100,7 @@ namespace PCLExt.Network
             {
                 var bytesReceived = 0;
                 while (bytesReceived < count)
-                    bytesReceived += Client.Receive(buffer, bytesReceived, count - bytesReceived, 0);
+                    bytesReceived += Socket.Receive(buffer, bytesReceived, count - bytesReceived, 0);
 
                 return bytesReceived;
             }
@@ -114,7 +118,7 @@ namespace PCLExt.Network
 
             IsDisposed = true;
 
-            Client?.Dispose();
+            Socket?.Dispose();
         }
     }
 }

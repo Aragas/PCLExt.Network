@@ -1,0 +1,49 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.3</TargetFramework>
+    <RootNamespace>PCLExt.Network</RootNamespace>
+    <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <AssemblyName>PCLExt.Network</AssemblyName>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>TRACE;CORE;RELEASE;NETSTANDARD1_3</DefineConstants>
+    <DocumentationFile>bin\Release\netstandard1.3\PCLExt.Network.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;DEBUG;CORE;NETSTANDARD1_3</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\common\CommonAssemblyInfo.cs" Link="Properties\CommonAssemblyInfo.cs" />
+    <Compile Include="..\PCLExt.Network.Abstractions\EventArgs\SocketConnectedArgs.cs" Link="EventArgs\SocketConnectedArgs.cs" />
+    <Compile Include="..\PCLExt.Network.Abstractions\EventArgs\SocketDataReceivedArgs.cs" Link="EventArgs\SocketDataReceivedArgs.cs" />
+    <Compile Include="..\PCLExt.Network.Abstractions\EventArgs\SocketDisconnectedArgs.cs" Link="EventArgs\SocketDisconnectedArgs.cs" />
+    <Compile Include="..\PCLExt.Network.Abstractions\EventArgs\SocketEvent.cs" Link="EventArgs\SocketEvent.cs" />
+    <Compile Include="..\PCLExt.Network.Abstractions\IPPort.cs" Link="IPPort.cs" />
+    <Compile Include="..\PCLExt.Network.Abstractions\ISocketClient.cs" Link="ISocketClient.cs" />
+    <Compile Include="..\PCLExt.Network.Abstractions\ISocketClientEvent.cs" Link="ISocketClientEvent.cs" />
+    <Compile Include="..\PCLExt.Network.Abstractions\ISocketServer.cs" Link="ISocketServer.cs" />
+    <Compile Include="..\PCLExt.Network.Abstractions\ITCPClient.cs" Link="ITCPClient.cs" />
+    <Compile Include="..\PCLExt.Network.Abstractions\ITCPClientEvent.cs" Link="ITCPClientEvent.cs" />
+    <Compile Include="..\PCLExt.Network.Abstractions\ITCPListener.cs" Link="ITCPListener.cs" />
+    <Compile Include="..\PCLExt.Network.Abstractions\ITCPListenerEvent.cs" Link="ITCPListenerEvent.cs" />
+    <Compile Include="..\PCLExt.Network.Abstractions\IUDPClient.cs" Link="IUDPClient.cs" />
+    <Compile Include="..\PCLExt.Network.Abstractions\IUDPClientEvent.cs" Link="IUDPClientEvent.cs" />
+    <Compile Include="..\PCLExt.Network.Abstractions\IUDPListener.cs" Link="IUDPListener.cs" />
+    <Compile Include="..\PCLExt.Network.Desktop\DesktopTCPClient.cs" Link="DesktopTCPClient.cs" />
+    <Compile Include="..\PCLExt.Network.Desktop\DesktopTCPListener.cs" Link="DesktopTCPListener.cs" />
+    <Compile Include="..\PCLExt.Network.Desktop\DesktopUDPClient.cs" Link="DesktopUDPClient.cs" />
+    <Compile Include="..\PCLExt.Network.Desktop\DesktopUDPListener.cs" Link="DesktopUDPListener.cs" />
+    <Compile Include="..\PCLExt.Network\SocketClient.cs" Link="SocketClient.cs" />
+    <Compile Include="..\PCLExt.Network\SocketServer.cs" Link="SocketServer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="EventArgs\" />
+  </ItemGroup>
+
+</Project>

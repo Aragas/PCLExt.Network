@@ -27,7 +27,7 @@ namespace PCLExt.Network
             Port = port;
 
             var endpoint = new IPEndPoint(IPAddress.Any, Port);
-            Listener = new Socket(endpoint.AddressFamily, SocketType.Stream, ProtocolType.Tcp) { NoDelay = true };
+            Listener = new Socket(endpoint.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
 
             Listener.Bind(endpoint);
         }
@@ -50,7 +50,11 @@ namespace PCLExt.Network
             if (IsDisposed)
                 return;
 
+#if CORE
+            Listener.Shutdown(SocketShutdown.Both);
+#else
             Listener.Close();
+#endif
         }
 
         /// <summary>
