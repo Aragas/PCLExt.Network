@@ -78,7 +78,7 @@
       <Project>{3f8d0494-6ee2-47fe-b263-f09a5ea3d0b3}</Project>
       <Name>PCLExt.Network.Portable.Abstractions</Name>
     </ProjectReference>
-    <ProjectReference Include="E:\Shared\PCLExt.Network\\src\PCLExt.Network.Abstractions\PCLExt.Network.Abstractions.csproj">
+    <ProjectReference Include="..\PCLExt.Network.Abstractions\PCLExt.Network.Portable.Abstractions.csproj">
       <Project>{3f8d0494-6ee2-47fe-b263-f09a5ea3d0b3}</Project>
       <Name>PCLExt.Network.Abstractions</Name>
     </ProjectReference>

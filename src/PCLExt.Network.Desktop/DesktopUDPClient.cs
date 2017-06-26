@@ -57,11 +57,7 @@ namespace PCLExt.Network
         public void Disconnect()
         {
             if (IsConnected)
-#if CORE
-                Socket.Shutdown(SocketShutdown.Both);
-#else
                 Socket.Disconnect(false);
-#endif
         }
 
         /// <summary>
