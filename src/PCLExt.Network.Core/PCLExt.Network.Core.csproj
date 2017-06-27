@@ -35,8 +35,11 @@
     <Compile Include="..\PCLExt.Network.Abstractions\IUDPClientEvent.cs" Link="IUDPClientEvent.cs" />
     <Compile Include="..\PCLExt.Network.Abstractions\IUDPListener.cs" Link="IUDPListener.cs" />
     <Compile Include="..\PCLExt.Network.Desktop\DesktopTCPClient.cs" Link="DesktopTCPClient.cs" />
+    <Compile Include="..\PCLExt.Network.Desktop\DesktopTCPClientEvent.cs" Link="DesktopTCPClientEvent.cs" />
     <Compile Include="..\PCLExt.Network.Desktop\DesktopTCPListener.cs" Link="DesktopTCPListener.cs" />
+    <Compile Include="..\PCLExt.Network.Desktop\DesktopTCPListenerEvent.cs" Link="DesktopTCPListenerEvent.cs" />
     <Compile Include="..\PCLExt.Network.Desktop\DesktopUDPClient.cs" Link="DesktopUDPClient.cs" />
+    <Compile Include="..\PCLExt.Network.Desktop\DesktopUDPClientEvent.cs" Link="DesktopUDPClientEvent.cs" />
     <Compile Include="..\PCLExt.Network.Desktop\DesktopUDPListener.cs" Link="DesktopUDPListener.cs" />
     <Compile Include="..\PCLExt.Network\SocketClient.cs" Link="SocketClient.cs" />
     <Compile Include="..\PCLExt.Network\SocketServer.cs" Link="SocketServer.cs" />
